@@ -1,0 +1,42 @@
+Hello guy this is GZ here.. and we gonna lern thisday about ifconfig command.
+the ifconfig is shortcat for interface config, we useit for network interface configuration and managment.
+we will try todya to coverup the all material, we have alot of stuff to lern soooo... 
+Without unnecessary delay, let's get started.
+
+
+lets openup the man page for ifconfig
+So the ifconfig is the way you can manage your network interfaces on your linux machine or check your network activitis.
+so if we type if config we can see the IP address of our machine and the subnet mask and etcetera...
+
+
+just type "ifconfig":
+the Link encap stand for link encapsulation 
+I hope that you remember the OSI model, but if you don't, lets do quick review...
+the OSI model  or Open Systems Interconnection model is a product of  International Organization for Standardization or in short ISO
+and [open the OSI.pdf] the OSI model are mentioned in ISO/IEC 7498-1... and as you can see this is a long Document.. but for this level we need the basic
+
+[open the osi-schicht-modell.jpg]
+as you can see the OSI is the composition of the layer as follow:
+Application - layer 7
+Presentation - layer -6
+Session - layer 5
+Transport - layer 4
+Network - layer 3
+Data-link - layer 2
+and Pysical - layer 1
+
+every leyer encapsulate the upper layer and trasfert the datagram to the next layer and to be precise its transfer to the lower layer
+so.. the application are Literally the application.. such as WEB page and this web page - when it need to be transfer through the network,
+the machin add to it a hader and than it encapsulate by the Presentation layer, the  Presentation than add it's haders and sent is to the session layer,
+and so on until the pysical layer that send the data to it's destination on the network.
+
+so  the layer 2 is the data link layer, and in this layer we have some peotocols who encapsulate
+the entirely Datagram that which include on the upper layers.. the datagram and is't encapsulated are called Frame.
+we have alote of encapsulation protocol such as LLC which stand for Logical link control, we have the ATM Asynchronous Transfer Mode,
+and we have the Frame Relay, every such protocol encapsulat the Datagram the was creaded from the upper layer and add
+to it the source and destination for the  transfer the frame that was created through the network..
+
+[go back to the terminal]
+In our case the encapsulation protocol is Ethernet, and the Ethernet frame are look like that...
+[open data_link_layer-eth-frame.jpg]
+the really thing that metter to us is the so
