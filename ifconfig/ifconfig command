@@ -25,18 +25,33 @@ Network - layer 3
 Data-link - layer 2
 and Pysical - layer 1
 
-every leyer encapsulate the upper layer and trasfert the datagram to the next layer and to be precise its transfer to the lower layer
+every leyer encapsulate the upper layer and trasfer the datagram to the next layer and to be precise its transfer to the lower layer
 so.. the application are Literally the application.. such as WEB page and this web page - when it need to be transfer through the network,
-the machin add to it a hader and than it encapsulate by the Presentation layer, the  Presentation than add it's haders and sent is to the session layer,
+the machin add to it a hader and than it encapsulated by the Presentation layer, the  Presentation than add his haders and sent is to the session layer,
 and so on until the pysical layer that send the data to it's destination on the network.
 
 so  the layer 2 is the data link layer, and in this layer we have some peotocols who encapsulate
-the entirely Datagram that which include on the upper layers.. the datagram and is't encapsulated are called Frame.
-we have alote of encapsulation protocol such as LLC which stand for Logical link control, we have the ATM Asynchronous Transfer Mode,
-and we have the Frame Relay, every such protocol encapsulat the Datagram the was creaded from the upper layer and add
-to it the source and destination for the  transfer the frame that was created through the network..
+the entirely Datagram  which include the upper layers.. the datagram and is't encapsulated at layer 2 are called Frame.
+we have a lot of encapsulation protocol such as LLC which stand for Logical link control, we have the ATM Asynchronous Transfer Mode,
+and we have the Frame Relay, every such protocol encapsulat the Datagram thשא was creaded from the upper layer and add
+to it the source and destination for transfering the frame through the network..
 
 [go back to the terminal]
 In our case the encapsulation protocol is Ethernet, and the Ethernet frame are look like that...
 [open data_link_layer-eth-frame.jpg]
-the really thing that metter to us is the so
+the really thing that metter to us is the source mac, which in our case are the "HWaddr" which stand for hardware address.
+actually, whan you send data to some one on the net your machine use the hardware address as the source MAC address at the frame
+
+the next filed are the "inet addr" which stand for intenet address, the same at layer 2, but in this layer, which is layer 3 - the network, the entirely datagrame with it's encapsulated hader are called packet
+and the same as the frame this packet contain the source IP address and destination IP address, in our case the "inet addr" contain the source IP
+that tha machine use for sending packet through the network
+
+The Bcast are stend for broadcast address for this segment, if we ping to this address every machine on the same segment as our segment will replay to us
+as exmple lets type "arp"(this command will tell us what is the MAC address of some IP address) 
+as you can see the only arp that you can see is the defalt gataway IP address and it's MAC address
+so let's try to ping to every one in this segment
+"ping -b (for broadcast) and than the broadcast IP.
+mmm it's seems that it does not work... apparently our machine ignore from broadcast.. so you can enable it by typing 
+echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+and lets now type "ping -b broadcast" 
+ 
