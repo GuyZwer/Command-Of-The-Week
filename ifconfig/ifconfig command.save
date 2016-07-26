@@ -47,7 +47,7 @@ and the same as the frame this packet contain the source IP address and destinat
 that tha machine use for sending packet through the network
 
 The Bcast are stend for broadcast address for this segment, if we ping to this address every machine on the same segment as our segment will hear the ping
-and maybe some of them will relay. 
+and maybe some of them will replay. 
 as exmple lets type "arp"(this command will tell us what is the MAC address of some IP address) 
 as you can see the only arp that you can see is the defalt gataway IP address and it's MAC address
 so let's try to ping to every one in this segment
