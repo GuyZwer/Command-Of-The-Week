@@ -83,7 +83,10 @@ Of course, it occurs only when you can get to the destination though both of the
 has no meening.
 
 RX packets stand for the number of the received packet on that interface and the errors: stend for the packet that dropped while the interface received packets, the packet that are dropped is corrupted packes
-and overrun: refers to high rate that the buffer gets full and the karnet isn't able to empty it.
+and overrun: refers to high rate that the buffer gets full and the karnet isn't able to deal with it. and the frame filed as far as I know
+
+the TX packets refers to the trunsfered packet through the interface and the same as the RX we have errors filed dropped filed and overrun filed.
+the carrier filed stend for network congestion, this filed are always in 0, but if it doesnt it's indicate that we have a duplex mismatch or problem with the physical connector.
 
 
 
