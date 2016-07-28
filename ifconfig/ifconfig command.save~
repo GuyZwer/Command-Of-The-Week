@@ -82,11 +82,15 @@ we can set the metric for the lower value.
 Of course, it occurs only when you can get to the destination though both of the interfaces so if we set some interface to be the best priority over the outher one and only the  outher interface has the right way to get to the destination (as should splendid in the routing table), than the metric value 
 has no meening.
 
-RX packets stand for the number of the received packet on that interface and the errors: stend for the packet that dropped while the interface received packets, the packet that are dropped is corrupted packes
-and overrun: refers to high rate that the buffer gets full and the karnet isn't able to deal with it. and the frame filed as far as I know
+RX packets stand for the number of the received packet on that interface and the errors: stend for the packet that dropped while the interface received packets,
+[open data_link_layer-eth-frame.jpg]
+thus packet that are dropped are the packets that found corrupted with the CRC checksum mismatch which is a filed in the frame 
+and overrun: refers to high rate that the buffer gets full and the karnet isn't able to deal with it.
+the frame filed as far as I know specifies the frame that are correupted which mean that the frame are not a multiple of 8 bits.
+and it may include frames that are way too short or way too big.
 
 the TX packets refers to the trunsfered packet through the interface and the same as the RX we have errors filed dropped filed and overrun filed.
-the carrier filed stend for network congestion, this filed are always in 0, but if it doesnt it's indicate that we have a duplex mismatch or problem with the physical connector.
+the carrier filed stend for carrier sense, this filed are always in 0, but if it doesnt it's indicate that we have a duplex mismatch or problem with the physical connector.
 
 
 
