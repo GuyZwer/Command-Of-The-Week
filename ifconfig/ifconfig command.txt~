@@ -1,0 +1,107 @@
+Hello guy this is GZ here.. and we gonna lern thisday about ifconfig command.
+the ifconfig is shortcat for interface config, we useit for network interface configuration and managment.
+we will try todya to coverup the all material, we have alot of stuff to lern soooo... 
+Without unnecessary delay, let's get started.
+
+
+lets openup the man page for ifconfig
+So the ifconfig is the way you can manage your network interfaces on your linux machine or check your network activitis.
+so if we type if config we can see the IP address of our machine and the subnet mask and etcetera...
+
+
+just type "ifconfig":
+the Link encap stand for link encapsulation 
+I hope that you remember the OSI model, but if you don't, lets do quick review...
+the OSI model  or Open Systems Interconnection model is a product of  International Organization for Standardization or in short ISO
+and [open the OSI.pdf] the OSI model are mentioned in ISO/IEC 7498-1... and as you can see this is a long Document.. but for this level we need the basic
+
+[open the osi-schicht-modell.jpg]
+as you can see the OSI is the composition of the layer as follow:
+Application - layer 7
+Presentation - layer -6
+Session - layer 5
+Transport - layer 4
+Network - layer 3
+Data-link - layer 2
+and Pysical - layer 1
+
+every leyer encapsulate the upper layer and trasfer the datagram to the next layer and to be precise its transfer to the lower layer
+so.. the application are Literally the application.. such as WEB page and this web page - when it need to be transfer through the network,
+the machin add to it a hader and than it encapsulated by the Presentation layer, the  Presentation than add his haders and sent is to the session layer,
+and so on until the pysical layer that send the data to it's destination on the network.
+
+so  the layer 2 is the data link layer, and in this layer we have some peotocols who encapsulate
+the entirely Datagram  which include the upper layers.. the datagram and is't encapsulated at layer 2 are called Frame.
+we have a lot of encapsulation protocol such as LLC which stand for Logical link control, we have the ATM Asynchronous Transfer Mode,
+and we have the Frame Relay, every such protocol encapsulat the Datagram thשא was creaded from the upper layer and add
+to it the source and destination for transfering the frame through the network..
+
+[go back to the terminal]
+In our case the encapsulation protocol is Ethernet, and the Ethernet frame are look like that...
+[open data_link_layer-eth-frame.jpg]
+the really thing that metter to us is the source mac, which in our case are the "HWaddr" which stand for hardware address.
+actually, whan you send data to some one on the net your machine use the hardware address as the source MAC address at the frame
+
+the next filed are the "inet addr" which stand for intenet address, the same at layer 2, but in this layer, which is layer 3 - the network, the entirely datagrame with it's encapsulated hader are called packet
+and the same as the frame this packet contain the source IP address and destination IP address, in our case the "inet addr" contain the source IP
+that tha machine use for sending packet through the network
+
+The Bcast are stend for broadcast address for this segment, if we ping to this address every machine on the same segment as our segment will hear the ping
+and maybe some of them will replay.
+
+the inet6 addr stend for IP version 6
+and Scope which stend for
+the scope of the area where this address is valid
+and in this filed we have some value
+
+############################
+global - A global address is what you might currently consider a "normal" address. That is, a unicast address, which is visible on and routable across an external network.
+
+site - Site-local address are supposed to be used within a site. Routers will not forward any packet with site-local source or destination address outside the site.
+
+link - Link-local address are supposed to be used for addressing nodes on a single link. Packets originating from or destined to a link-local address will not be forwarded by a router.
+
+host - A host address is something that will only exist within the host machine itself. For instance 127.0.0.1 is a host address commonly assigned to the loopback interface. The loopback interface has no external connectivity and so it's scope is confined to within that of the host machine.
+in thus four you only use when you have IPv6
+##############################
+
+UP meen that the interface is UP and ready to use
+BROADCAST meening that the interface are support in BC which is necessary to obtin IP address via DHCP
+
+MULTICAST This indicates that the Ethernet interface supports multicasting. IP multicast is a technique for one-to-many communication over the network.
+
+MTU stend for Maximum Transmission Unit
+this is the unit size for each packet that received by the ethernet card. this value by default for all ethernet device is set to 1500.
+if the packet that created are larger than 1500 than the packt go through fregmentaion or buffer overflows
+
+Metric
+This parameter has significance only while routing packets
+this option can take a value of 1 and 2 and 3 
+and etcetera.. the value is the priority of the interface device, so for example if we want to use one device over the outher one
+we can set the metric for the lower value.
+Of course, it occurs only when you can get to the destination though both of the interfaces so if we set some interface to be the best priority over the outher one and only the  outher interface has the right way to get to the destination (as should splendid in the routing table), than the metric value 
+has no meening.
+
+RX packets stand for the number of the received packet on that interface and the errors: stend for the packet that dropped while the interface received packets,
+[open data_link_layer-eth-frame.jpg]
+thus packet that are dropped are the packets that found corrupted with the CRC checksum mismatch which is a filed in the frame 
+and overrun: refers to high rate that the buffer gets full and the karnet isn't able to deal with it.
+the frame filed as far as I know specifies the frame that are correupted which mean that the frame are not a multiple of 8 bits.
+and it may include frames that are way too short or way too big.
+
+the TX packets refers to the trunsfered packet through the interface and the same as the RX we have errors filed dropped filed and overrun filed.
+the carrier filed stend for carrier sense, this filed are always in 0, but if it doesnt it's indicate that we have a duplex mismatch or problem with the physical connector.
+
+
+
+
+
+ 
+as exmple lets type "arp"(this command will tell us what is the MAC address of some IP address) 
+as you can see the only arp that you can see is the defalt gataway IP address and it's MAC address
+so let's try to ping to every one in this segment
+"ping -b (for broadcast) and than the broadcast IP.
+mmm it's seems that it does not work... apparently our machine ignore from broadcast.. so you can enable it by typing 
+echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+and lets now type "ping -b broadcast" 
+ 
