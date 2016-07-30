@@ -90,7 +90,10 @@ the frame filed as far as I know specifies the frame that are correupted which m
 and it may include frames that are way too short or way too big.
 
 the TX packets refers to the trunsfered packet through the interface and the same as the RX we have errors filed dropped filed and overrun filed.
-the carrier filed stend for carrier sense, this filed are always in 0, but if it doesnt it's indicate that we have a duplex mismatch or problem with the physical connector.
+the carrier filed stend for carrier sense, and it's refer to the number of times the carrier is lost during a transmission, this filed are always in 0, but if it doesnt it's indicate that the switch or the hub as turned off. 
+
+collisions filed refer to the case that two or more device trasmite onto the same wire at the same time. this is indicate that we have a duplex issues or problem with the phisical connector. if you want to reed more about it you can do a google serch on CSMA/CD.. if you remember this protocol are define how network devices will respond in the case of collision on the network.
+
 
 
 
