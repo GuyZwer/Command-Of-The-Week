@@ -1,4 +1,7 @@
-Hello guy this is GZ here.. and we gonna lern thisday about ifconfig command.
+Hello guys this is Guy here.. and 
+I'm so excited because today and in the coming weeks we are going to lern about the thing that related to network on linux,
+so this day we start with the ifconfig command.
+
 the ifconfig is shortcat for interface config, we useit for network interface configuration and managment.
 we will try todya to coverup the all material, we have alot of stuff to lern soooo... 
 Without unnecessary delay, let's get started.
@@ -6,19 +9,20 @@ Without unnecessary delay, let's get started.
 
 lets openup the man page for ifconfig
 So the ifconfig is the way you can manage your network interfaces on your linux machine or check your network activitis.
-so if we type if config we can see the IP address of our machine and the subnet mask and etcetera...
+so if we type ifconfig we can see the IP address of our machine and the subnet mask and etcetera...
 
 
 just type "ifconfig":
 the Link encap stand for link encapsulation 
 I hope that you remember the OSI model, but if you don't, lets do quick review...
+
 the OSI model  or Open Systems Interconnection model is a product of  International Organization for Standardization or in short ISO
 and [open the OSI.pdf] the OSI model are mentioned in ISO/IEC 7498-1... and as you can see this is a long Document.. but for this level we need the basic
 
 [open the osi-schicht-modell.jpg]
 as you can see the OSI is the composition of the layer as follow:
 Application - layer 7
-Presentation - layer -6
+Presentation - layer 6
 Session - layer 5
 Transport - layer 4
 Network - layer 3
@@ -27,13 +31,13 @@ and Pysical - layer 1
 
 every leyer encapsulate the upper layer and trasfer the datagram to the next layer and to be precise its transfer to the lower layer
 so.. the application are Literally the application.. such as WEB page and this web page - when it need to be transfer through the network,
-the machin add to it a hader and than it encapsulated by the Presentation layer, the  Presentation than add his haders and sent is to the session layer,
+the machin add to it a haders and than it encapsulated by the Presentation layer, the  Presentation than add his haders and sent is to the session layer,
 and so on until the pysical layer that send the data to it's destination on the network.
 
 so  the layer 2 is the data link layer, and in this layer we have some peotocols who encapsulate
 the entirely Datagram  which include the upper layers.. the datagram and is't encapsulated at layer 2 are called Frame.
 we have a lot of encapsulation protocol such as LLC which stand for Logical link control, we have the ATM Asynchronous Transfer Mode,
-and we have the Frame Relay, every such protocol encapsulat the Datagram thשא was creaded from the upper layer and add
+and we have the Frame Relay, every such protocol encapsulat the Datagram that was creaded from the upper layer and add
 to it the source and destination for transfering the frame through the network..
 
 [go back to the terminal]
@@ -44,11 +48,16 @@ actually, whan you send data to some one on the net your machine use the hardwar
 
 the next filed are the "inet addr" which stand for intenet address, the same at layer 2, but in this layer, which is layer 3 - the network, the entirely datagrame with it's encapsulated hader are called packet
 and the same as the frame this packet contain the source IP address and destination IP address, in our case the "inet addr" contain the source IP
-that tha machine use for sending packet through the network
+that the machine use for sending packet through the network
 
 The Bcast are stend for broadcast address for this segment, if we ping to this address every machine on the same segment as our segment will hear the ping
 and maybe some of them will replay.
 
+the Mask is the way that your coputer can calculate if the destination IP address are as the same segment that we are.
+If you want to know more about it I recommend you to visit the iplocation.net website
+and I will link it down below
+
+==========================
 the inet6 addr stend for IP version 6
 and Scope which stend for
 the scope of the area where this address is valid
@@ -64,15 +73,17 @@ link - Link-local address are supposed to be used for addressing nodes on a sing
 host - A host address is something that will only exist within the host machine itself. For instance 127.0.0.1 is a host address commonly assigned to the loopback interface. The loopback interface has no external connectivity and so it's scope is confined to within that of the host machine.
 in thus four you only use when you have IPv6
 ##############################
+==============================
+
 
 UP meen that the interface is UP and ready to use
 BROADCAST meening that the interface are support in BC which is necessary to obtin IP address via DHCP
 
-MULTICAST This indicates that the Ethernet interface supports multicasting. IP multicast is a technique for one-to-many communication over the network.
+and MULTICAST This indicates that the Ethernet interface supports multicasting. IP multicast is a technique for one-to-many communication over the network.
 
 MTU stend for Maximum Transmission Unit
 this is the unit size for each packet that received by the ethernet card. this value by default for all ethernet device is set to 1500.
-if the packet that created are larger than 1500 than the packt go through fregmentaion or buffer overflows
+if the packet that created are larger than this number than the packt go through fregmentaion or buffer overflows
 
 Metric
 This parameter has significance only while routing packets
@@ -95,7 +106,15 @@ the carrier filed stend for carrier sense, and it's refer to the number of times
 collisions filed refer to the case that two or more device trasmite onto the same wire at the same time. this is indicate that we have a duplex issues or problem with the phisical connector. if you want to reed more about it you can do a google serch on CSMA/CD.. if you remember this protocol are define how network devices will respond in the case of collision on the network.
 
 
+txqueuelen - this determine the length of the transmit queue of the device. it's 
+actually the buffer size for the framse befor thay are sending out.
 
+RX bytes: stend for the number of bytes that resived on that interface and the TX byted: setnd for the packet that send througth that interface. do NOT confused with the RX and TX PACKET! which are the nuber of the packet that resive in and send out on that interface.
+
+Interrupt - This is usually set by the system.
+Interrupt numbers are assigned to hardware devices by the kernel. we can see all interrupt numbers being used by executing cat /proc/interrupts/.
+so in my case the interrupt is 19 so if we type cat /proc/interrupts and pip grep 19
+we can see the line who mach that, as you can see it's the eth0.
 
 
 
