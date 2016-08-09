@@ -116,16 +116,9 @@ Interrupt numbers are assigned to hardware devices by the kernel. we can see all
 so in my case the interrupt is 19 so if we type cat /proc/interrupts and pip grep 19
 we can see the line who mach that, as you can see it's the eth0.
 
-base address - as far as I know this is use for the machine can comunicate with that divice
+base address - as far as I know this is use for the machine can comunicate with that divice you can read about it, just googled input/output base address
 
 
 
- 
-as exmple lets type "arp"(this command will tell us what is the MAC address of some IP address) 
-as you can see the only arp that you can see is the defalt gataway IP address and it's MAC address
-so let's try to ping to every one in this segment
-"ping -b (for broadcast) and than the broadcast IP.
-mmm it's seems that it does not work... apparently our machine ignore from broadcast.. so you can enable it by typing 
-echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
-and lets now type "ping -b broadcast" 
+
  

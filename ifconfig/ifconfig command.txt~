@@ -116,6 +116,8 @@ Interrupt numbers are assigned to hardware devices by the kernel. we can see all
 so in my case the interrupt is 19 so if we type cat /proc/interrupts and pip grep 19
 we can see the line who mach that, as you can see it's the eth0.
 
+base address - as far as I know this is use for the machine can comunicate with that divice
+
 
 
  
